@@ -4,9 +4,6 @@ FROM debian:bookworm AS builder
 ENV RISCV=/opt/riscv
 ENV PATH="${RISCV}/bin:${PATH}"
 
-RUN sed -i 's|http://deb.debian.org|http://ftp.riken.jp/Linux/debian|g' /etc/apt/sources.list.d/debian.sources || \
-    sed -i 's|http://deb.debian.org|http://ftp.riken.jp/Linux/debian|g' /etc/apt/sources.list
-
 # BuildKitキャッシュを使用して高速インストール
 # 必要な依存パッケージのインストール
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
