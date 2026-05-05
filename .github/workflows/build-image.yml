@@ -4,6 +4,9 @@ on:
   push:
     branches: [master]
     tags: ['v*']
+    paths:
+      - 'docker/**'
+      - '.github/workflows/build-image.yml'
 
 env:
   REGISTRY: ghcr.io
