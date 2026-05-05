@@ -40,5 +40,29 @@ RUN git clone --depth 1 https://github.com/riscv-software-src/riscv-pk && \
     make -j$(nproc) install && \
     cd ../.. && rm -rf riscv-pk
 
+# 1. 環境変数の定義 (ユーザー名やUIDを指定)
+ARG USERNAME=riscv-sim
+ARG USER_UID=1000
+ARG USER_GID=1000
+
+# 2. ユーザーとグループの作成
+# 開発時にsudoを使いたくなる場合に備え、sudo権限も付与しておくと親切です
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+    # && apt-get update \
+    # && apt-get install -y sudo \
+    # && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    # && chmod 0440 /etc/sudoers.d/$USERNAME
+
+# 3. ツールチェーン(/opt/riscv)の所有者を変更
+# これにより、一般ユーザーでもライブラリの追加インストールなどが可能になります
+# RUN chown -R $USERNAME:$USER_GID /opt/riscv
+
+# 4. 作業ディレクトリの準備
+RUN mkdir -p /work && chown $USERNAME:$USER_GID /work
 WORKDIR /work
+
+# 5. デフォルトユーザーを切り替え
+USER $USERNAME
+
 CMD ["/bin/bash"]
