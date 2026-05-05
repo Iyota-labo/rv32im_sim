@@ -43,3 +43,9 @@ docker run -it --rm -v $(pwd):/work riscv-rv32im
 
 docker run -it --rm -v $(pwd):/work riscv-rv32im riscv32-unknown-elf-gcc hello.c -o hello.elf
 ```
+
+ユーザーID、グループIDが1000ではない場合は、以下のように-uオプションでで実行するユーザーIDとグループIDを指定できます。
+
+```sh
+docker run -u $(id -u):$(id -g) ...
+```
