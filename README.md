@@ -22,6 +22,18 @@ docker run --rm -v $(pwd):/work riscv-rv32im bash -c "\
     spike --isa=rv32im /opt/riscv/riscv32-unknown-elf/bin/pk hello.elf"
 ```
 
+## ビルド済みイメージのPull方法
+
+下記のコマンドでビルド済みDocker imageを ghcr.io から入手できます。
+
+```sh
+docker pull ghcr.io/iyota-labo/rv32im_sim:master
+```
+
+このイメージを利用する場合は、イメージ名が`ghcr.io/iyota-labo/rv32im_sim:master`となります。
+
+これ以降のコマンドの`riscv-rv32im`を`ghcr.io/iyota-labo/rv32im_sim:master`に置き換えてください。
+
 ## 利用方法
 
 以下のコマンドでコンテナ内に入り、作業が可能となります。
