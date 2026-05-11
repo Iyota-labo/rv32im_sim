@@ -40,12 +40,14 @@ docker pull ghcr.io/iyota-labo/rv32im_sim:master
 
 ```sh
 docker run -it --rm riscv-rv32im
+# docker run -it --rm ghcr.io/iyota-labo/rv32im_sim:master
 ```
 
 また、以下のコマンドで、作業ディレクトリをコンテナ内と接続し、作業が可能となります。
 
 ```sh
 docker run -it --rm -v $(pwd):/work riscv-rv32im
+# docker run -it --rm -v $(pwd):/work ghcr.io/iyota-labo/rv32im_sim:master
 ```
 
 さらに、以下のように内部で実行したいコマンドを続けて記述することで、コンテナ内でコマンドを実行できます。
@@ -54,6 +56,11 @@ docker run -it --rm -v $(pwd):/work riscv-rv32im
 # docker run -it --rm -v $(pwd):/work riscv-rv32im <command>
 
 docker run -it --rm -v $(pwd):/work riscv-rv32im riscv32-unknown-elf-gcc hello.c -o hello.elf
+
+
+# # docker run -it --rm -v $(pwd):/work ghcr.io/iyota-labo/rv32im_sim:master <command>
+
+# docker run -it --rm -v $(pwd):/work ghcr.io/iyota-labo/rv32im_sim:master riscv32-unknown-elf-gcc
 ```
 
 ユーザーID、グループIDが1000ではない場合は、以下のように-uオプションでで実行するユーザーIDとグループIDを指定できます。
