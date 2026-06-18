@@ -30,7 +30,8 @@ RUN git clone --depth 1 https://github.com/riscv-software-src/riscv-isa-sim && \
     cd ../.. && rm -rf riscv-isa-sim
 
 # 3. riscv-pk
-RUN git clone --depth 1 https://github.com/riscv-software-src/riscv-pk && \
+# newlib2linuxブランチを使用して、open() flagsの互換性を確保
+RUN git clone -b newlib2linux --depth 1 https://github.com/Iyota-labo/riscv-pk.git && \
     cd riscv-pk && mkdir build && cd build && \
     # CC/CXXを明示的に指定
     CC=${RISCV}/bin/riscv32-unknown-elf-gcc \
