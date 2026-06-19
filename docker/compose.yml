@@ -1,0 +1,13 @@
+services:
+  rv-sim:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      additional_contexts:
+        example: ../example
+    image: riscv-rv32im
+    working_dir: /home/rv-sim/work
+    volumes:
+      - ../src:/home/rv-sim/work/src
+    tty: true
+    stdin_open: true
