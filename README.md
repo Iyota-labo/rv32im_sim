@@ -28,11 +28,9 @@ docker run --rm riscv-rv32im bash -c "\
 
 ```sh
 docker pull ghcr.io/iyota-labo/rv32im_sim:master
+docker tag ghcr.io/iyota-labo/rv32im_sim:master riscv-rv32im
+docker rmi ghcr.io/iyota-labo/rv32im_sim:master
 ```
-
-このイメージを利用する場合は、イメージ名が`ghcr.io/iyota-labo/rv32im_sim:master`となります。
-
-これ以降のコマンドの`riscv-rv32im`を`ghcr.io/iyota-labo/rv32im_sim:master`に置き換えてください。
 
 ## 利用方法
 
