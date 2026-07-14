@@ -66,7 +66,7 @@ COPY --from=builder /opt/riscv /opt/riscv
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update && apt-get install --no-install-recommends -y sudo nano bash-completion cmake make ninja-build file less device-tree-compiler \
-    libmpc3 libmpfr6 libboost-regex1.74.0 && apt-get clean
+    libmpc3 libmpfr6 libboost-regex1.74.0 git-lfs && apt-get clean
 
 # 1. 環境変数の定義 (ユーザー名やUIDを指定)
 ARG USERNAME=rv-sim
