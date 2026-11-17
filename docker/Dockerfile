@@ -71,7 +71,7 @@ ENV PATH="${RISCV}/bin:${PATH}"
 
 # ビルド済みのツールチェーン/Spike/riscv-pkのみを引き継ぎ、
 # ビルド専用パッケージやソースツリーを最終イメージから排除する
-COPY --from=builder /opt/riscv /opt/riscv
+COPY --from=builder /opt /opt
 
 # 対話利用に最低限必要なユーティリティと、ビルドステージで生成された
 # バイナリ(gcc, spike など)が実行時に必要とする共有ライブラリ・外部コマンドをインストール
